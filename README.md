@@ -1,16 +1,16 @@
 # Reverse proxy for AWS S3 w/ basic authentication
 
-![circleci status](https://circleci.com/gh/pottava/aws-s3-proxy.svg?style=shield&circle-token=9bc17d02e4513df42196523a1791465e65d8ab01)
+![circleci status](https://circleci.com/gh/thomasdupas/aws-s3-proxy.svg?style=shield&circle-token=9bc17d02e4513df42196523a1791465e65d8ab01)
 
-[![pottava/s3-proxy](http://dockeri.co/image/pottava/s3-proxy)](https://hub.docker.com/r/pottava/s3-proxy/)
+[![thomasdupas/s3-proxy](http://dockeri.co/image/thomasdupas/s3-proxy)](https://hub.docker.com/r/thomasdupas/s3-proxy/)
 
 Supported tags and respective `Dockerfile` links:
 
-・latest ([docker/linux/2.0/Dockerfile](https://github.com/pottava/aws-s3-proxy/blob/master/docker/linux/2.0/Dockerfile))  
-・2.0 ([docker/linux/2.0/Dockerfile](https://github.com/pottava/aws-s3-proxy/blob/master/docker/linux/2.0/Dockerfile))  
-・1.4 ([docker/linux/1.4/Dockerfile](https://github.com/pottava/aws-s3-proxy/blob/master/docker/linux/1.4/Dockerfile))  
-・1.4-win ([docker/windows/1.4/Dockerfile](https://github.com/pottava/aws-s3-proxy/blob/master/docker/windows/1.4/Dockerfile))  
-・1 ([docker/linux/1.4/Dockerfile](https://github.com/pottava/aws-s3-proxy/blob/master/docker/linux/1.4/Dockerfile))
+・latest ([docker/linux/2.0/Dockerfile](https://github.com/thomasdupas/aws-s3-proxy/blob/master/docker/linux/2.0/Dockerfile))  
+・2.0 ([docker/linux/2.0/Dockerfile](https://github.com/thomasdupas/aws-s3-proxy/blob/master/docker/linux/2.0/Dockerfile))  
+・1.4 ([docker/linux/1.4/Dockerfile](https://github.com/thomasdupas/aws-s3-proxy/blob/master/docker/linux/1.4/Dockerfile))  
+・1.4-win ([docker/windows/1.4/Dockerfile](https://github.com/thomasdupas/aws-s3-proxy/blob/master/docker/windows/1.4/Dockerfile))  
+・1 ([docker/linux/1.4/Dockerfile](https://github.com/thomasdupas/aws-s3-proxy/blob/master/docker/linux/1.4/Dockerfile))
 
 ## Description
 
@@ -19,7 +19,7 @@ You don't need to configure a Bucket for `Website Hosting`.
 
 http://this-proxy.com/access/ -> s3://bucket/access/index.html
 
-([日本語はこちら](https://github.com/pottava/aws-s3-proxy/blob/master/README-ja.md))
+([日本語はこちら](https://github.com/thomasdupas/aws-s3-proxy/blob/master/README-ja.md))
 
 
 ## Usage
@@ -58,28 +58,29 @@ MAX_IDLE_CONNECTIONS      | Allowed number of idle connections to the S3 storage
 IDLE_CONNECTION_TIMEOUT   | Allowed timeout to the S3 storage.                |          | 10
 DISABLE_COMPRESSION       | If true will pass encoded content through as-is.  |          | true
 INSECURE_TLS              | If true it will skip cert checks                  |          | false
+REVERSE_SORTING           | If true it will sort in descending order          |          | false
 
 ### 2. Run the application
 
-`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET pottava/s3-proxy`
+`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET thomasdupas/s3-proxy`
 
 * with basic auth:
 
-`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET -e BASIC_AUTH_USER -e BASIC_AUTH_PASS pottava/s3-proxy`
+`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET -e BASIC_AUTH_USER -e BASIC_AUTH_PASS thomasdupas/s3-proxy`
 
 * with TLS:
 
-`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET -e SSL_CERT_PATH -e SSL_KEY_PATH pottava/s3-proxy`
+`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET -e SSL_CERT_PATH -e SSL_KEY_PATH thomasdupas/s3-proxy`
 
 * with CORS:
 
-`docker run -d -p 8080:80 -e CORS_ALLOW_ORIGIN -e CORS_ALLOW_METHODS -e CORS_ALLOW_HEADERS -e CORS_MAX_AGE pottava/s3-proxy`
+`docker run -d -p 8080:80 -e CORS_ALLOW_ORIGIN -e CORS_ALLOW_METHODS -e CORS_ALLOW_HEADERS -e CORS_MAX_AGE thomasdupas/s3-proxy`
 
 * with docker-compose.yml:
 
 ```
 proxy:
-  image: pottava/s3-proxy
+  image: thomasdupas/s3-proxy
   ports:
     - 8080:80
   environment:
@@ -96,4 +97,4 @@ proxy:
 
 ## Copyright and license
 
-Code released under the [MIT license](https://github.com/pottava/aws-s3-proxy/blob/master/LICENSE).
+Code released under the [MIT license](https://github.com/thomasdupas/aws-s3-proxy/blob/master/LICENSE).

@@ -1,6 +1,6 @@
 # Basic 認証も可能な AWS S3 へのリバースプロキシ
 
-[![pottava/s3-proxy](http://dockeri.co/image/pottava/s3-proxy)](https://hub.docker.com/r/pottava/s3-proxy/)
+[![thomasdupas/s3-proxy](http://dockeri.co/image/thomasdupas/s3-proxy)](https://hub.docker.com/r/thomasdupas/s3-proxy/)
 
 
 ## 概要
@@ -50,25 +50,25 @@ INSECURE_TLS              | TLS 証明書の正当性チェックをスキップ
 
 ### 2. アプリを起動します
 
-`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET pottava/s3-proxy`
+`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET thomasdupas/s3-proxy`
 
 * Basic 認証をつけるなら:
 
-`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET -e BASIC_AUTH_USER -e BASIC_AUTH_PASS pottava/s3-proxy`
+`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET -e BASIC_AUTH_USER -e BASIC_AUTH_PASS thomasdupas/s3-proxy`
 
 * TLS を有効にしたいなら:
 
-`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET -e SSL_CERT_PATH -e SSL_KEY_PATH pottava/s3-proxy`
+`docker run -d -p 8080:80 -e AWS_REGION -e AWS_S3_BUCKET -e SSL_CERT_PATH -e SSL_KEY_PATH thomasdupas/s3-proxy`
 
 * CORS を有効にしたいなら:
 
-`docker run -d -p 8080:80 -e CORS_ALLOW_ORIGIN -e CORS_ALLOW_METHODS -e CORS_ALLOW_HEADERS -e CORS_MAX_AGE pottava/s3-proxy`
+`docker run -d -p 8080:80 -e CORS_ALLOW_ORIGIN -e CORS_ALLOW_METHODS -e CORS_ALLOW_HEADERS -e CORS_MAX_AGE thomasdupas/s3-proxy`
 
 * docker-compose.yml として使うなら:
 
 ```
 proxy:
-  image: pottava/s3-proxy
+  image: thomasdupas/s3-proxy
   ports:
     - 8080:80
   environment:
